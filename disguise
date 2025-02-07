@@ -1,0 +1,336 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
+local UICorner_2 = Instance.new("UICorner")
+local targetBox = Instance.new("TextBox")
+local disguiseToBox = Instance.new("TextBox")
+local disguiseButton = Instance.new("TextButton")
+local displayBox = Instance.new("TextBox")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(165, 255, 137)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.445748985, 0, 0.152255639, 0)
+Frame.Size = UDim2.new(0, 200, 0, 269)
+
+UICorner.Parent = Frame
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.119999997, 0, 0.0371747203, 0)
+TextLabel.Size = UDim2.new(0, 151, 0, 37)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Player Disguiser"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
+
+UICorner_2.Parent = TextLabel
+
+targetBox.Name = "targetBox"
+targetBox.Parent = Frame
+targetBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+targetBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+targetBox.BorderSizePixel = 0
+targetBox.Position = UDim2.new(-0.00499999989, 0, 0.297397763, 0)
+targetBox.Size = UDim2.new(0, 200, 0, 25)
+targetBox.Font = Enum.Font.SourceSans
+targetBox.PlaceholderText = "Target"
+targetBox.Text = ""
+targetBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+targetBox.TextSize = 14.000
+
+disguiseToBox.Name = "disguiseToBox"
+disguiseToBox.Parent = Frame
+disguiseToBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+disguiseToBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+disguiseToBox.BorderSizePixel = 0
+disguiseToBox.Position = UDim2.new(0, 0, 0.412977368, 0)
+disguiseToBox.Size = UDim2.new(0, 200, 0, 25)
+disguiseToBox.Font = Enum.Font.SourceSans
+disguiseToBox.PlaceholderText = "Disguise"
+disguiseToBox.Text = ""
+disguiseToBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+disguiseToBox.TextSize = 14.000
+
+disguiseButton.Name = "disguiseButton"
+disguiseButton.Parent = Frame
+disguiseButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+disguiseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+disguiseButton.BorderSizePixel = 0
+disguiseButton.Position = UDim2.new(0, 0, 0.594795525, 0)
+disguiseButton.Size = UDim2.new(0, 200, 0, 50)
+disguiseButton.Font = Enum.Font.SourceSans
+disguiseButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+disguiseButton.TextSize = 14.000
+
+displayBox.Name = "displayBox"
+displayBox.Parent = Frame
+displayBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+displayBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+displayBox.BorderSizePixel = 0
+displayBox.Position = UDim2.new(0, 0, 0.498479217, 0)
+displayBox.Size = UDim2.new(0, 200, 0, 25)
+displayBox.Font = Enum.Font.SourceSans
+displayBox.PlaceholderText = "display name"
+displayBox.Text = ""
+displayBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+displayBox.TextSize = 14.000
+
+-- Scripts:
+
+local function HKYIBN_fake_script() -- Frame.Smooth GUI Dragging 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+	local runService = (game:GetService("RunService"));
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	function Lerp(a, b, m)
+		return a + (b - a) * m
+	end;
+	
+	local lastMousePos
+	local lastGoalPos
+	local DRAG_SPEED = (8); -- // The speed of the UI darg.
+	function Update(dt)
+		if not (startPos) then return end;
+		if not (dragging) and (lastGoalPos) then
+			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+			return 
+		end;
+	
+		local delta = (lastMousePos - UserInputService:GetMouseLocation())
+		local xGoal = (startPos.X.Offset - delta.X);
+		local yGoal = (startPos.Y.Offset - delta.Y);
+		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+	end;
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			lastMousePos = UserInputService:GetMouseLocation()
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	runService.Heartbeat:Connect(Update)
+end
+coroutine.wrap(HKYIBN_fake_script)()
+local function OSSEPLY_fake_script() -- disguiseButton.LocalScript 
+	local script = Instance.new('LocalScript', disguiseButton)
+
+	-- kdtdude the first dude im tryin dis out on lol
+	-- vmfsey
+	
+	local function CFrameAccessoryToCharacter(characterModel, accessory)
+		local accessoryAttachment = accessory:FindFirstChildWhichIsA("Attachment", true)
+		if not accessoryAttachment then
+			warn("No attachments found in accessory. Accessory was not attached.")
+			return
+		end
+	
+		local attachmentName = accessoryAttachment.Name
+		local attachTo = characterModel:FindFirstChild(attachmentName, true)
+		if not attachTo or not attachTo:IsA("Attachment") then
+			warn(string.format("No attachment named %s found in character. Accessory was not attached.", attachmentName))
+			return
+		end
+	
+		local Handle = accessory:FindFirstChild("Handle")
+		if not Handle then
+			warn("Attachment has no handle. Accessory was not attached.")
+			return
+		end
+		
+		accessory.Parent = characterModel
+	
+		--Handle.CFrame = attachTo.WorldCFrame * accessoryAttachment.CFrame:Inverse()
+		
+		local weld = Instance.new("Weld", Handle)
+		weld.Part0 = Handle
+		weld.Part1 = characterModel:FindFirstChild("Head")
+		weld.C0 = weld.C0 - weld.C0.Position + Handle:WaitForChild("AccessoryWeld").C0.Position
+		weld.C1 = weld.C1 - weld.C1.Position + Handle:WaitForChild("AccessoryWeld").C1.Position
+	end
+	
+	
+	local Players = game:GetService("Players")
+	local plr = Players.LocalPlayer
+	local char = plr.Character
+	
+	-- Replaces target character meshes with the disguise character's meshes.
+	
+	local transformBM = true
+	
+	local targetNameBox = script.Parent.Parent.targetBox
+	local disguiseToBox = script.Parent.Parent.disguiseToBox
+	
+	local targetPlayer
+	local targetName
+	local targetId
+	local targetChar
+	local targetHumanoid
+	
+	local disguiseName
+	local disguiseId
+	local disguiseChar
+	local disguiseDisplay
+	
+	
+	local function disguiseTarget()
+		if targetNameBox.Text == '' or disguiseToBox.Text == '' then
+			return
+		end
+		
+		-- Begin finding target
+		targetName = targetNameBox.Text
+		targetPlayer = Players:WaitForChild(targetName)
+		targetId = targetPlayer.UserId
+		targetChar = targetPlayer.Character
+		targetHumanoid = targetChar:WaitForChild("Humanoid")
+		
+		-- Disguise
+		disguiseName = disguiseToBox.Text
+		disguiseId = Players:GetUserIdFromNameAsync(disguiseName)
+		disguiseChar = Players:CreateHumanoidModelFromUserId(disguiseId)
+		disguiseDisplay = script.Parent.Parent.displayBox.Text
+		
+		-- Allow transformation
+		for _, v in pairs(targetChar:GetChildren()) do
+			if v:IsA("Shirt") or v:IsA("Pants") or v:IsA("ShirtGraphic") or v:IsA("BodyColors") or v:IsA("Accessory") then
+				v:Destroy()
+			end
+		end
+		
+		
+		-- Transform target character
+		disguiseChar.Name = disguiseName
+		targetHumanoid.DisplayName = disguiseDisplay
+		targetPlayer.UserId = disguiseId
+		targetPlayer.Name = disguiseName
+		targetChar.Head:WaitForChild("face").Texture = disguiseChar.Head.face.Texture
+		targetChar.Name = disguiseName
+	
+		for _, v in pairs(disguiseChar:GetChildren()) do
+			if v:IsA("Shirt") or v:IsA("Pants") or v:IsA("ShirtGraphic") or v:IsA("BodyColors") then
+				v.Parent = targetChar
+			end
+		end
+		
+		disguiseChar:WaitForChild("HumanoidRootPart").CFrame = targetChar.HumanoidRootPart.CFrame
+		for _, v in pairs(disguiseChar:GetChildren()) do
+			if v:IsA("Accessory") then
+				CFrameAccessoryToCharacter(targetChar, v)
+			end
+		end
+		
+		for _, v in pairs(targetPlayer:GetChildren()) do
+			if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
+				for _, v2 in pairs(disguiseChar:GetChildren()) do
+					if v2:IsA("BasePart") and v2.Name == v.Name then
+						v.Color = v2.Color
+					end
+				end
+			end
+		end
+		
+		
+		-- Mesh part transforming
+		if transformBM then
+			for _, v in pairs(targetPlayer:GetChildren()) do
+				if v:IsA("MeshPart") and v.Name ~= "HumanoidRootPart" then
+					for _, v2 in pairs(disguiseChar:GetChildren()) do
+						if v2:IsA("MeshPart") and v2.Name == v.Name then
+							v.MeshId = v2.MeshId
+						end
+					end
+				end
+			end
+		end
+		
+		if transformBM then
+			for _, v in pairs(targetPlayer:GetChildren()) do
+				if v:IsA("CharacterMesh") and v.Name ~= "HumanoidRootPart" then
+					for _, v2 in pairs(disguiseChar:GetChildren()) do
+						if v2:IsA("CharacterMesh") and v2.Name == v.Name then
+							v.MeshId = v2.MeshId
+						end
+					end
+				end
+			end
+		end
+		
+		-- GUIS, etc
+		for _, v in pairs(targetChar:GetDescendants()) do
+			if v:IsA("TextLabel") then
+				if v.Text == targetName then
+					v.Text = disguiseName
+				end
+			end
+		end
+		
+		for _, v in pairs(char:GetChildren()) do
+			if v:IsA("ObjectValue") then
+				v.Changed:Connect(function()
+					if tostring(v.Value.Name) == targetName then
+						v.Value = disguiseChar
+					end 
+				end)
+			end
+		end
+		
+		plr.PlayerGui.DescendantAdded:Connect(function(txtLabel)
+			if txtLabel:IsA("TextLabel") then
+				local check = string.find(txtLabel.Text, targetName)
+				if check ~= nil then
+					local newT = string.gsub(txtLabel.Text, targetName, disguiseName)
+					txtLabel.Text = newT
+				end
+			end
+		end)
+		--[[
+		if transformBM then
+			spawn(function()
+				targetChar:WaitForChild("Head"):FindFirstChildWhichIsA("")
+			end)
+		end]]--
+		
+	end
+	
+	script.Parent.MouseButton1Down:Connect(disguiseTarget)
+end
+coroutine.wrap(OSSEPLY_fake_script)()
