@@ -1,0 +1,186 @@
+--[[spawn(function()
+	while true do task.wait(.1)
+		spawn(function()
+				game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.ReportAbuseMenuNewContainerPage.AbuseReportMenuNewRoot.FocusNavigationCoreScriptsWrapper.AbuseReportMenuPlaceholderFrame.MenuLayoutFrame.Menu.MenuItemsContainer.MenuItems.MenuItems.AbuseReason.RightComponentWrapper.RightComponent.ControlButton.ButtonContent.ButtonMiddleContent.Text.Text = "jew"
+		end)
+	end
+end)]]--
+
+--game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.DescendantAdded:Connect(function(v)
+
+
+    while task.wait() do
+
+    -- Report reason afterchanger
+    pcall(function()
+    local GoyText = game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.ReportAbuseMenuNewContainerPage.AbuseReportMenuNewRoot.FocusNavigationCoreScriptsWrapper.AbuseReportMenuPlaceholderFrame.MenuLayoutFrame.Menu.MenuItemsContainer.MenuItems.MenuItems.AbuseReason.RightComponentWrapper.RightComponent.ControlButton.ButtonContent.ButtonMiddleContent.Text
+    GoyText.TextWrapped = false
+    if GoyText.Text == "Swearing" then
+        
+        GoyText.Text = string.reverse("drow reggin eht dias")
+    end
+    if GoyText.Text == "Off-platform links" then
+        
+        GoyText.Text = string.reverse("nrop dlihc gnidnes")
+    end
+    if GoyText.Text == "Personal information" then
+        
+        GoyText.Text = "doxxing/" .. string.reverse("dlihc a gnipar")
+    end
+    if GoyText.Text == "Dating/Sex" then
+        
+        GoyText.Text = string.reverse("ronim a htiw gnitxes")
+    end
+    if GoyText.Text == "Cheating" then
+        
+        GoyText.Text = "using shitty scripts"
+    end
+    if GoyText.Text == "Username" then
+        
+        GoyText.Text = "niggas name is dogshit"
+    end
+    if GoyText.Text == "Bullying" then
+        
+        GoyText.Text = "attempting to swat/brick"
+    end
+    if GoyText.Text == "Scamming" then
+        
+        GoyText.Text = "jacob sutphin"
+    end
+
+    --List changer
+    pcall(function()
+        if game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.ReportAbuseMenuNewContainerPage.AbuseReportMenuNewRoot.FocusNavigationCoreScriptsWrapper.AbuseReportMenuPlaceholderFrame then
+            local AbuseContainer
+            for _, v in pairs(game.CoreGui:GetDescendants()) do
+                if v.Name == "RCTScrollContentView" then
+                print'hi'
+                AbuseContainer = v
+                end
+            end
+            for _, v in pairs(AbuseContainer:GetDescendants()) do
+                if v:IsA("TextLabel") then
+                    local GoyText
+                    GoyText = v
+                    if GoyText.Text == "Swearing" then
+        
+        GoyText.Text = string.reverse("drow reggin eht dias")
+    end
+    if GoyText.Text == "Off-platform links" then
+        
+        GoyText.Text = string.reverse("nrop dlihc gnidnes")
+    end
+    if GoyText.Text == "Personal information" then
+        
+        GoyText.Text = "doxxing/" .. string.reverse("dlihc a gnipar")
+    end
+    if GoyText.Text == "Dating/Sex" then
+        
+        GoyText.Text = string.reverse("ronim a htiw gnitxes")
+    end
+    if GoyText.Text == "Cheating" then
+        
+        GoyText.Text = "using shitty scripts"
+    end
+    if GoyText.Text == "Username" then
+        
+        GoyText.Text = "niggas name is dogshit"
+    end
+    if GoyText.Text == "Bullying" then
+        
+        GoyText.Text = "attempting to swat/brick"
+    end
+    if GoyText.Text == "Scamming" then
+        
+        GoyText.Text = "jacob sutphin"
+    end
+                end
+            end
+        end
+    end)
+    end)
+    pcall(function()
+        if game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.ReportAbuseMenuNewContainerPage.AbuseReportMenuNewRoot.FocusNavigationCoreScriptsWrapper.AbuseReportMenuPlaceholderFrame:GetChildren()[8].Frame.FocusNavigationCoreScriptsWrapper.DialogContainer.Overlay.Modal.BackgroundImage.ModalContent.SelectorFrame.ListTable.RCTScrollContentView then
+            local AbuseContainer = game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.ReportAbuseMenuNewContainerPage.AbuseReportMenuNewRoot.FocusNavigationCoreScriptsWrapper.AbuseReportMenuPlaceholderFrame:GetChildren()[8].Frame.FocusNavigationCoreScriptsWrapper.DialogContainer.Overlay.Modal.BackgroundImage.ModalContent.SelectorFrame.ListTable.RCTScrollContentView
+            for _, v in pairs(AbuseContainer:GetDescendants()) do
+                if v:IsA("TextLabel") then
+                    local GoyText
+                    GoyText = v
+                    if GoyText.Text == "Swearing" then
+        
+        GoyText.Text = string.reverse("drow reggin eht dias")
+    end
+    if GoyText.Text == "Off-platform links" then
+        
+        GoyText.Text = string.reverse("nrop dlihc gnidnes")
+    end
+    if GoyText.Text == "Personal information" then
+        
+        GoyText.Text = "doxxing/" .. string.reverse("dlihc a gnipar")
+    end
+    if GoyText.Text == "Dating/Sex" then
+        
+        GoyText.Text = string.reverse("ronim a htiw gnitxes")
+    end
+    if GoyText.Text == "Cheating" then
+        
+        GoyText.Text = "using shitty scripts"
+    end
+    if GoyText.Text == "Username" then
+        
+        GoyText.Text = "niggas name is dogshit"
+    end
+    if GoyText.Text == "Bullying" then
+        
+        GoyText.Text = "attempting to swat/brick"
+    end
+    if GoyText.Text == "Scamming" then
+        
+        GoyText.Text = "jacob sutphin"
+    end
+                end
+            end
+        end
+    end)
+end
+
+-- Main changer
+
+game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.DescendantAdded:Connect(function(v)
+    if v:IsA("TextLabel") then
+        local GoyText
+                    GoyText = v
+                    if GoyText.Text == "Swearing" then
+        
+        GoyText.Text = string.reverse("drow reggin eht dias")
+    end
+    if GoyText.Text == "Off-platform links" then
+        
+        GoyText.Text = string.reverse("nrop dlihc gnidnes")
+    end
+    if GoyText.Text == "Personal information" then
+        
+        GoyText.Text = "doxxing/" .. string.reverse("dlihc a gnipar")
+    end
+    if GoyText.Text == "Dating/Sex" then
+        
+        GoyText.Text = string.reverse("ronim a htiw gnitxes")
+    end
+    if GoyText.Text == "Cheating" then
+        
+        GoyText.Text = "using shitty scripts"
+    end
+    if GoyText.Text == "Username" then
+        
+        GoyText.Text = "niggas name is dogshit"
+    end
+    if GoyText.Text == "Bullying" then
+        
+        GoyText.Text = "attempting to swat/brick"
+    end
+    if GoyText.Text == "Scamming" then
+        
+        GoyText.Text = "jacob sutphin"
+    end
+    end
+end)
